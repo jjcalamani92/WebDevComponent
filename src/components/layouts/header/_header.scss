@@ -1,0 +1,182 @@
+.header-1 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: $white;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $box-shadow;
+
+  .logo {
+    display: flex;
+    font-size: 3rem;
+    color: $primaryText;
+    align-items: center;
+    .icon {
+      @include icon(3rem);
+      color: $primaryColor;
+    }
+    span {
+      color: $primaryColor;
+      font-weight: 700;
+    }
+  }
+  .navbar {
+    ul{
+      list-style: none;
+      li{
+        position: relative;
+        float: left;
+        a{
+          transition: all 0.3s ease;
+          font-size: 2rem;
+          padding: 2rem;
+          color: $primaryText;
+          display: block;
+          text-transform: capitalize;
+          &:hover{
+            background: $backgroundColor;
+          }
+        }
+        ul{
+          position: absolute;
+          left: 0;
+          width: 25rem;
+          background: $white;
+          box-shadow: $box-shadow;
+          border-radius: .5rem;
+          border: $border;
+          display: none;
+          li{
+            width: 100%;
+            ul{
+              left: 25rem;
+              top: 0;
+            }
+          }
+        }
+        &:hover > ul{
+          display: initial;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+  .icons {
+    display: none;
+    .icon {
+      @include icon(2.5rem);
+      color: $primaryText;
+      transition: all 0.5s ease;
+      &:hover{
+        color: $accentColor;
+        transition: all 0.5s ease;
+      }
+      
+    }
+  }
+  .search {
+    width: 20%;
+    height: 5rem;
+    border: $border;
+    overflow: hidden;
+    background: $white;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+    input {
+      font-size: 1.7rem;
+      padding: 0 1.2rem;
+      height: 100%;
+      width: 100%;
+      text-transform: none;
+      color: $secondaryText;
+    }
+    label {
+      display: flex;
+      height: 100%;
+      font-size: 2.5rem;
+      padding-right: 1.5rem;
+      color: $secondaryText;
+      align-items: center;
+      padding: 0 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: $backgroundColor;
+      .icon {
+        margin: 0 1rem;
+      }
+      &:hover {
+        background: $darkPrimaryColor;
+        color: $white;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  @include tablet {
+    padding: 1rem 5%;
+    .search {
+      display: none;
+    }
+    .icons {
+      display: inline-block;
+    }
+    .navbar {
+      position: absolute;
+      top: 115%; right: 2rem;
+      width: 25rem;
+      background: $white;
+      box-shadow: $box-shadow;
+      border-radius: .5rem;
+      transform: scale(0);
+      transform-origin: top right;
+      ul{
+        transition: all 0.5s ease;
+        display: inline-block;
+        li{
+          width: 100%;
+          ul{
+            position: relative;
+            width: 100%;
+            box-shadow: $box-shadow;
+            li{
+              background: $white;
+              ul{
+                width: 100%;
+                left: 0;
+              }
+            }
+          }
+        }
+      }
+      &.active{
+        transition: all 0.5s ease;
+        transform: scale(1);
+      }
+    }
+    .search {
+      position: absolute;
+      top: 115%; right: 2rem;
+      width: 50rem; height: 5.5rem;
+      background: $white;
+      border-radius: .5rem;
+      transform: scale(0);
+      transition: all 0.5s ease;
+      transform-origin: top right;
+      &.active{
+        
+        transition: all 0.5s ease;
+        transform: scale(1);
+      }
+    }
+  }
+  @include telefono{
+    .search{
+      width: 90%;
+    }
+  }
+}
